@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <title>Zhe Zhang's Research Plan</title>
+    <meta charset='utf-8'/>
+    <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+    <meta name='description' content='Research Plan for Zhe Zhang as a Data Engineer'>
+    <link rel='icon' type='image/png' href='logo.png'/>
+    <!-- Github CSS -->
+    <!-- <link rel='stylesheet' href='https://cdn.jsdelivr.net/github-markdown-css/2.2.1/github-markdown.css'/> -->
+    <!-- Bootstrap CSS -->
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css' integrity='sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z' crossorigin='anonymous'>
+    <!-- Fontawesome 5 CSS -->
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.14.0/css/all.css' integrity='sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc' crossorigin='anonymous'>
+    <!-- Add highlight.js -->
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/default.min.css'>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js'></script>
+    <!-- Manual adjustments -->
+    <link rel='stylesheet' type='text/css' href='main.css'>
+  </head>
+  <body id='bootstrap-overrides'>
+    <div id='content'></div>
+    <!-- markdown-it setup -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/markdown-it/11.0.1/markdown-it.min.js'></script>
+    <script src='plugins/markdown-it-footnote/dist/markdown-it-footnote.min.js'></script>
+    <script src='plugins/markdown-it-mark/dist/markdown-it-mark.min.js'></script>
+    <script src='plugins/markdown-it-sub/dist/markdown-it-sub.min.js'></script>
+    <script src='plugins/markdown-it-sup/dist/markdown-it-sup.min.js'></script>
+    <script src='plugins/markdown-it-container/dist/markdown-it-container.min.js'></script>
+    <script src='plugins/markdown-it-attrs/markdown-it-attrs.browser.js'></script>
+    <script src='plugins/markdown-it-bracketed-spans/dist/markdown-it-bracketed-spans.min.js'></script>
+    <script src='plugins/markdown-it-deflist/dist/markdown-it-deflist.min.js'></script>
+    <script src='plugins/markdown-it-task-lists/dist/markdown-it-task-lists.min.js'></script>
+    <script src='plugins/markdown-it-abbr/dist/markdown-it-abbr.min.js'></script>
+    <script src='plugins/markdown-it-anchor/dist/markdown-it-anchor.min.js'></script>
+    <!-- Enhance abbr tag for touch devices -->
+    <script src='plugins/touchtap-event/touchtap-event.js'></script>
+    <script src='plugins/abbr-touch/abbr-touch.js'></script>
+    <!-- Optional JavaScript -->
+    <!-- Add KaTeX to support equations -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css' integrity='sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X' crossorigin='anonymous'>
+    <script defer src='https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js' integrity='sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4' crossorigin='anonymous'></script>
+    <script defer src='https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js' integrity='sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa' crossorigin='anonymous'></script>
+    <!-- Add Mermaid to support various graphs -->
+    <!-- <script src='https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js'></script> -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- <script src='https://code.jquery.com/jquery-3.5.1.slim.min.js' integrity='sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj' crossorigin='anonymous'></script>
+    <script src='https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js' integrity='sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN' crossorigin='anonymous'></script>
+    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js' integrity='sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV' crossorigin='anonymous'></script> -->
+    <script>
+      const md = markdownit({
+        html: true,
+        linkify: true,
+        highlight: (str, lang) => {
+          if (lang && hljs.getLanguage(lang)) {
+            try {
+              return hljs.highlight(lang, str).value
+            } catch (__) {
+              // do nothing
+            }
+          }
+
+          return '' // use external default escaping
+        }
+      })
+      md.use(markdownitFootnote)
+      md.use(markdownitMark)
+      md.use(markdownitSub)
+      md.use(markdownitSup)
+      md.use(markdownItAttrs)
+      md.use(markdownitContainer, 'more', {
+        validate: params => {
+          return params.trim().match(/^more\s+(.*)$/)
+        },
+        render: (tokens, idx) => {
+          const m = tokens[idx].info.trim().match(/^more\s+(.*)$/)
+
+          if (tokens[idx].nesting === 1) {
+            // opening tag
+            return '<details><summary>' + md.renderInline(m[1]) + '</summary>\n'
+          } else {
+            // closing tag
+            return '</details>\n'
+          }
+        }
+      })
+      // Order matters!
+      md.use(markdownitContainer, 'dynamic', {
+        validate: () => true,
+        render: (tokens, idx, options, env, slf) => {
+          const token = tokens[idx]
+          const className = token.info.trim()
+          const renderedAttrs = slf.renderAttrs(token)
+
+          if (token.nesting === 1) {
+            // opening tag
+            if (className && className !== '{}') {
+              return '<div class="' + className + '">'
+            } else {
+              return '<div' + renderedAttrs + '>'
+            }
+          } else {
+            // closing tag
+            return '</div>'
+          }
+        }
+      })
+      md.use(markdownitBracketedSpans)
+      // md.use(markdownitContainer, 'mermaid')
+      md.use(markdownitDeflist)
+      md.use(markdownitTaskLists)
+      md.use(markdownitAbbr)
+      md.use(markdownitAnchor, {
+        level: 1,
+        // slugify: string => string,
+        permalink: true,
+        // renderPermalink: (slug, opts, state, permalink) => {},
+        permalinkClass: 'header-anchor',
+        permalinkSymbol: '#',
+        permalinkBefore: true,
+      })
+      md.linkify.tlds('.sc', false)
+
+      fetch('research-plan.md')
+        .then(response => response.text())
+        .then(result => {
+          document.body.setAttribute('class', 'theme-light') // set theme
+          document.getElementById('content').innerHTML = md.render(result)
+
+          // render the math with Katex
+          renderMathInElement(document.body, {
+            delimiters: [ // mind the order of delimiters(!?)
+              { left: '$$', right: '$$', display: true },
+              { left: '$', right: '$', display: false },
+              // {left: '\\[', right: '\\]', display: true},
+              // {left: '\\(', right: '\\)', display: false},
+            ]
+          })
+
+          // render the diagrams with mermaid
+          // mermaid.initialize({
+          //   startOnLoad: false,
+          //   cloneCssStyles: false,
+          //   flowchart: {
+          //     useMaxWidth: true,
+          //   }
+          // })
+          // const diagrams = document.querySelectorAll('.mermaid')
+          // for (let i = 0; i < diagrams.length; i++) {
+          //   if (diagrams[i].offsetWidth > 0) {
+          //     mermaid.init(undefined, diagrams[i])
+          //   }
+          // }
+
+          // Switch theme
+          const setTheme = themeName => {
+            localStorage.setItem('theme', themeName)
+            // Update theme switch icon
+            if (themeName === 'theme-light') {
+              document.body.classList.remove('theme-dark')
+              document.body.classList.add('theme-light')
+              document.getElementById('theme-switch').classList.remove('fa-sun')
+              document.getElementById('theme-switch').classList.add('fa-moon')
+            } else {
+              document.body.classList.remove('theme-light')
+              document.body.classList.add('theme-dark')
+              document.getElementById('theme-switch').classList.remove('fa-moon')
+              document.getElementById('theme-switch').classList.add('fa-sun')
+            }
+          }
+
+          const initTheme = () => {
+            let theme
+            if (localStorage.getItem('theme') !== 'theme-dark') {
+              theme = 'theme-light'
+            } else {
+              theme = 'theme-dark'
+            }
+            setTheme(theme)
+          }
+
+          const switchTheme = () => {
+            if (localStorage.getItem('theme') === 'theme-dark') {
+              setTheme('theme-light')
+            } else {
+              setTheme('theme-dark')
+            }
+          }
+
+          // Switch scale
+          const setScale = scale => {
+            localStorage.setItem('scale', scale)
+            // Update scale switch icon
+            if (scale === 'big') {
+              document.body.classList.remove('scale-small')
+              document.body.classList.add('scale-big')
+              document.getElementById('scale-switch').classList.remove('fa-search-plus')
+              document.getElementById('scale-switch').classList.add('fa-search-minus')
+            } else {
+              document.body.classList.remove('scale-big')
+              document.body.classList.add('scale-small')
+              document.getElementById('scale-switch').classList.remove('fa-search-minus')
+              document.getElementById('scale-switch').classList.add('fa-search-plus')
+            }
+          }
+
+          const initScale = () => {
+            let scale
+            if (localStorage.getItem('scale') !== 'small') {
+              scale = 'big'
+            } else {
+              scale = 'small'
+            }
+            setScale(scale)
+          }
+
+          const switchScale = () => {
+            if (localStorage.getItem('scale') === 'big') {
+              setScale('small')
+            } else {
+              setScale('big')
+            }
+          }
+
+          initTheme()
+          document.getElementById('theme-switch').addEventListener('click', switchTheme, false)
+
+          initScale()
+          document.getElementById('scale-switch').addEventListener('click', switchScale, false)
+
+          // Enable abbr tooltips for touch devices
+          let tooltipTimeout
+
+          const getTooltipElement = () => {
+            let tooltip = document.querySelector('#abbr-tooltip')
+            if (!tooltip) {
+              tooltip = document.createElement('div')
+              tooltip.id = 'abbr-tooltip'
+              // Technically this is duplicate content, just exposing it on mobile
+              tooltip.setAttribute('aria-hidden', 'true')
+              document.body.appendChild(tooltip)
+            }
+            return tooltip
+          }
+
+          const updateTooltip = (tooltip, term, expandedTerm) => {
+            const text = '**' + term + ':** ' + expandedTerm
+            tooltip.innerHTML = md.renderInline(text)
+            tooltip.classList.add('visible')
+
+            if (tooltipTimeout) {
+              window.clearTimeout(tooltipTimeout)
+            }
+
+            const timeoutLength = text.length * 60
+            tooltipTimeout = window.setTimeout(() => {
+              tooltip.classList.remove('visible')
+            }, timeoutLength)
+          }
+
+          abbrTouch(document.body, (target, title) => {
+            const tooltip = getTooltipElement()
+            // Ensure the tooltip is ready so that the initial transition works
+            window.setTimeout(() => {
+              updateTooltip(tooltip, target.innerHTML, title)
+            }, 0)
+          })
+        })
+    </script>
+  </body>
+</html>

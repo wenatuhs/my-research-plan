@@ -1,0 +1,377 @@
+@import url(https://cdnjs.cloudflare.com/ajax/libs/firacode/5.2.0/fira_code.css);
+
+.theme-light {
+    --color-bg: white;
+    --color-text: black;
+    --color-anchor: #e9ecef;
+}
+
+.theme-dark {
+    --color-bg: var(--dark);
+    --color-text: #adb5bd;
+    --color-anchor: #495057;
+}
+
+.scale-big {
+    font-size: 13pt;
+}
+
+.scale-small {
+    font-size: 11pt;
+}
+
+body {
+    /*position: relative;*/
+    padding-top: 36px;
+    padding-bottom: 36px;
+    padding-left: 36px;
+    padding-right: 36px;
+    /* borrowed from nginx */
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+    /* theme */
+    background: var(--color-bg);
+    color: var(--color-text);
+    transition: background-color 0.3s;
+}
+
+#bootstrap-overrides h1 {
+    font-weight: bolder;
+    font-size: 24pt;
+}
+
+#bootstrap-overrides h2 {
+    font-weight: bolder;
+    font-size: 18pt;
+    /*color: var(--secondary);*/
+}
+
+#bootstrap-overrides h3 {
+    font-weight: bolder;
+    font-size: 14pt;
+}
+
+#bootstrap-overrides h4 {
+    font-weight: bolder;
+    font-size: 12pt;
+}
+
+#bootstrap-overrides h5 {
+    font-weight: bolder;
+    font-size: 10pt;
+}
+
+#bootstrap-overrides h6 {
+    font-weight: bolder;
+    font-size: 8pt;
+}
+
+#bootstrap-overrides mark {
+    color: var(--color-text);
+    background-color: var(--color-anchor);
+    transition: background-color 0.3s;
+}
+
+/*a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: var(--primary);
+    color: #0062cc;
+}
+
+sup a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+a.footnote-backref {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+a.footnote-backref:hover {
+    color: #0062cc;
+    text-decoration: underline;
+}*/
+
+blockquote {
+    margin: 1.5em 2em;
+    padding: 0.5em;
+    filter: brightness(1.25);
+    color: var(--secondary);
+    font-style: italic;
+    quotes: "\201C""\201D""\2018""\2019";
+}
+
+blockquote:before {
+    color: var(--primary);
+    content: open-quote;
+    font-size: 4em;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+}
+
+blockquote p {
+    display: inline;
+}
+
+/*ul {
+    list-style-position: outside;
+    list-style-type: none;
+}*/
+
+/* Time block */
+.time dl {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 0.5em;
+}
+
+.time dt {
+    width: 7em;
+    flex-grow: 0;
+    font-family: 'Fira Code VF', monospace;
+    font-weight: 500;
+    /*padding-top: 2px;*/
+    line-height: 1.8;
+    color: var(--secondary);
+}
+
+.time dd {
+    width: 80%;
+    flex-grow: 1;
+    margin-bottom: 0.5em;
+}
+
+dd p {
+    margin-bottom: 0.5em;
+}
+
+.time dd > p:last-child { /* publications multiple in one year */
+    margin-bottom: 0;
+}
+
+.time dd > details:last-child > .comment:last-child > p:last-child { /* work experience details */
+    margin-bottom: 0;
+}
+
+details .time dd:last-child { /* collapsible time block */
+    margin-bottom: 0;
+}
+
+details .time dd > p { /* project banner in collapsible time block */
+    margin-bottom: 0;
+}
+
+details .time dd > .comment:last-child > p:last-child { /* project description in collapsible time block */
+    margin-bottom: 0;
+}
+
+.comment {
+    color: var(--secondary);
+    font-style: normal;
+    font-size: 0.9em;
+}
+
+/*details p {
+    margin-left: 1em;
+}*/
+
+summary {
+    outline: none;
+}
+
+dd summary {
+    font-size: 0.9em;
+}
+
+.section {
+    margin-bottom: 1em;
+}
+
+.section > .time + details {
+    margin-top: -0.5em;
+}
+
+/*summary::-webkit-details-marker {
+    display: none;
+}
+
+summary:after {
+    content: '+';
+    color: var(--primary);
+    float: left;
+    text-align: center;
+    width: 1em;
+}
+
+details[open] summary:after {
+    content: '-';
+}*/
+
+/*.time {
+    font-family: 'Fira Code VF', monospace;
+    font-weight: 500;
+    display: inline-block;
+    width: 96px;
+    color: var(--secondary);
+}*/
+
+.hl {
+    color: var(--primary);
+}
+
+.nobr {
+    white-space: nowrap;
+}
+
+.header-anchor {
+    position: absolute;
+    width: 36px;
+    margin-left: -36px;
+    padding-right: 4px;
+    text-align: right;
+    color: var(--color-anchor);
+    transition: color 0.3s;
+}
+
+.footnotes {
+    font-size: 0.9em;
+}
+
+.footnotes p {
+    margin-bottom: 0.5em;
+}
+
+@supports (font-variation-settings: normal) {
+    code {
+        font-family: 'Fira Code VF', monospace;
+        font-weight: 500;
+    }
+}
+
+.sup-icon {
+    color: var(--secondary);
+    font-style: normal;
+    font-size: medium;
+    vertical-align: top;
+    cursor: pointer;
+}
+
+#theme-switch {
+    float: right;
+}
+
+#scale-switch {
+    float: right;
+    margin-right: 16px;
+}
+
+.h1-icon {
+    color: var(--secondary);
+    font-style: normal;
+    font-size: medium;
+    line-height: 35px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+#abbr-tooltip {
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    right: 0;
+    color: var(--color-text);
+    background-color: var(--color-anchor);
+    /*border-top: 1px solid var(--secondary);*/
+    text-align: center;
+    font-size: 1em;
+    padding: 1em 1em;
+    will-change: transform;
+    transform: translateZ(0);
+    transition: bottom cubic-bezier(.73, 0, .27, 1) .3s, background-color 0.3s;
+}
+
+#abbr-tooltip.visible {
+    bottom: 0em;
+}
+
+/* Bootstrap grayscale */
+.bg-gray-1 {
+  background-color: #f8f9fa!important;
+}
+
+.bg-gray-2 {
+  background-color: #e9ecef!important;
+}
+
+.bg-gray-3 {
+  background-color: #dee2e6!important;
+}
+
+.bg-gray-4 {
+  background-color: #ced4da!important;
+}
+
+.bg-gray-5 {
+  background-color: #adb5bd!important;
+}
+
+.bg-gray-6 {
+  background-color: #868e96!important;
+}
+
+.bg-gray-7 {
+  background-color: #495057!important;
+}
+
+.bg-gray-8 {
+  background-color: #343a40!important;
+}
+
+.bg-gray-9 {
+  background-color: #212529!important;
+}
+
+.bg-black {
+  background-color: #000!important;
+}
+
+/*table tr th {background:#222; color:#fff; padding:0; border:#111 solid 1px;  text-align: center; font-weight: bold;}
+table tr td {border:1px #ccc solid; padding:5px;}
+table tr td.rightright {background: #eee;}
+table tr td h4 {margin:0; padding:0; font-weight:normal;}
+
+table {
+  margin-bottom: 2em;
+  width: 100%;
+}
+th {
+  border-bottom: 2px solid #ccc;
+  font-weight: bold;
+  text-align: left;
+}
+td { border-bottom: 1px solid #ddd; }
+caption, th, td {
+  padding: 4px 10px 4px 0;
+}
+caption {
+  background: #f1f1f1;
+  padding: 10px 0;
+  margin-bottom: 1em;
+}
+
+tr,td,th {
+  vertical-align: middle;
+}*/
+
+/* Use this if you use span-x classes on th/td. */
+/*table .last { padding-right: 0; } */
